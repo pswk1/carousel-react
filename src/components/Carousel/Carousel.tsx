@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { Wrapper, CarouselSlide, CarouselSlides } from './CarouselComponents';
+import {
+	Wrapper,
+	CarouselSlide,
+	CarouselSlides,
+	Button,
+    ButtonContainer
+} from './CarouselComponents';
 
 interface IProps {
 	children: JSX.Element[];
@@ -22,22 +28,24 @@ const Carousel = ({ children }: IProps) => {
 				</CarouselSlides>
 			</Wrapper>
 
-			<button
-				onClick={() => {
-					setCurrentSlide(
-						(currentSlide - 1 + activeSlide.length) % activeSlide.length
-					);
-				}}
-			>
-				Left
-			</button>
-			<button
-				onClick={() => {
-					setCurrentSlide((currentSlide + 1) % activeSlide.length);
-				}}
-			>
-				Right
-			</button>
+			<ButtonContainer>
+				<Button
+					onClick={() => {
+						setCurrentSlide(
+							(currentSlide - 1 + activeSlide.length) % activeSlide.length
+						);
+					}}
+				>
+					{'<'}
+				</Button>
+				<Button
+					onClick={() => {
+						setCurrentSlide((currentSlide + 1) % activeSlide.length);
+					}}
+				>
+					{'>'}
+				</Button>
+			</ButtonContainer>
 		</>
 	);
 };
